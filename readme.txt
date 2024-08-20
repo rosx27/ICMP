@@ -19,22 +19,11 @@ The program follows these methods to achieve its objectives:
 4. **Website Response Check**: Measures the response times for specified websites to assess their availability and performance.
 5. **Email Reporting**: Compiles the test results into a log file, zips the logs, and sends them via email for large data analysis.
 
-### Instruction for Developers
-1. **Setup**: Ensure all dependencies are installed. This includes the required Python libraries such as `icmplib`, `requests`, `pyzipper`, `tkinter`, `ttkbootstrap`, and others.
-2. **Configuration**: 
-   - Edit the global variables in the script to customize the list of hosts to ping and traceroute (`hosts`), the premises IPs (`premises_ips`), and email settings (`sender_email`, `sender_password`, `receiver_email`, etc.).
-   - Place a `config.json` file in the same directory as the script with the following content:
-     ```json
-     {
-         "sent": false
-     }
-     ```
-
 ### Instruction for Users
-1. **Running the Tool**:
+1. **Running the program**:
    1.1. There are three ways to run the ICMP Monitoring Tool to start the graphical interface:
        1.1.1. Run the `ICMP` shortcut on the Desktop.
-       1.1.2. Run the `ICMP.exe` located in `C:\Program Files\Ping`.
+       1.1.2. Run the `ICMP.exe` located in `C:\Users\<current user>\Downloads\Ping`.
        1.1.3. Restart the computer. The ICMP.exe has a shortcut in `C:\Users\<current user>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup` and will execute automatically.
    1.2. Use the button to report LIMS slowdonws. When this button is clicked, this will be recorded in the log files. This qualitative measurement will be used to compare to the quantitative measurements (ping, traceroute, speed tests) to establish a boundary of how slow a slow connection is.
    1.3. The program will automatically perform the tests at specified intervals (routine: 30 minutes; when the button is clicked: immediate, three (3) consecutive readings) and log the results.
@@ -42,6 +31,17 @@ The program follows these methods to achieve its objectives:
 2. **Viewing Logs**: The logs can be viewed in the text area of the GUI. They are also saved in a log file located at `C:\Users\<logged in user>\Downloads\Ping\` with the naming convention `<computer_name>_<date>_ICMP-result.txt`.
 3. **Email Reporting**: If the `send.txt` control file located in GitHub repository indicates that an email should be sent (`send_status.text` equals "1" or "2"), the program will compile the logs into a zip file and send it to the specified recipient.
 
+### Instruction for Developers
+1. **Setup**: Ensure all dependencies are installed. This includes the required Python libraries such as `icmplib`, `requests`, `pyzipper`, `tkinter`, `ttkbootstrap`, and others.
+2. **Configuration**: 
+   - Edit the global variables in the script to customize the list of hosts to ping and traceroute (`hosts`), the premises IPs (`premises_ips`), and email settings (`sender_email`, `sender_password`, `receiver_email`, etc.).
+   - Place a `config.json` file in the same directory as the script with the following content:
+     ```json
+     {
+         "sent": False
+     }
+     ```
+
 ### Notes
-- Ensure that the `config.json` and `ICMP.exe` files are located in the `C:\Users\<logged in user>\Downloads\Ping\` directory to avoid errors.
-- The email functionality relies on correct SMTP settings and valid email credentials.
+- Ensure that the `config.json` and `ICMP.exe` files are located in the `C:\Users\<current user>\Downloads\Ping\` directory to avoid errors.
+- The email functionality relies on the value of a file located in github.
